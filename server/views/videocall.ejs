@@ -1,60 +1,56 @@
 <html>
+
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link href="css/videocall.css" rel="stylesheet" type="text/css">
     <script src="https://static.opentok.com/v2/js/opentok.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 
-<div id="videos">
-    <div id="subscriber">
+    <div id="videos">
+        <div id="subscriber">
+            <div class="container-bg">
+                <img class="bg-subcriber" src="http://www.mrwallpaper.com/wallpapers/Tropical-Island-1366x768.jpg" alt="">
+                <div class="container-avatar">
+                    <i class="fa fa-spinner fa-spin loading"></i>
+                </div>
+            </div>
+        </div>
+        <div id="publisher"></div>
+    </div>
+    <script id="template-subcriber" type="text/x-handlebars-template">
         <div class="container-bg">
             <img class="bg-subcriber" src="http://www.mrwallpaper.com/wallpapers/Tropical-Island-1366x768.jpg" alt="">
             <div class="container-avatar">
-                <i class="fa fa-spinner fa-spin loading"></i>
+                <img src="{{imgUrl}}" alt="avatar-subscriber" class="avatar">
+                <div class="name-subcriber">{{name}}</div>
+                {{#unless isDisconnect}} {{#unless isNoAccepted}}
+                <i class="fa fa-spinner fa-spin loading"></i> {{#unless isConnect}}
+                <div class="status-call">Đang gọi...</div>
+                {{else}}
+                <div class="status-call">Đang kết nối...</div>
+                {{/unless}} {{else}}
+                <div class="status-call">Từ chối cuôc gọi</div>
+                <button type="button" class="btn btn-default" onclick="closeWindow()">Đóng</button> {{/unless}} {{else}}
+                <div class="status-call">Kết thúc cuôc gọi</div>
+                <button type="button" class="btn btn-default" onclick="closeWindow()">Đóng</button> {{/unless}}
             </div>
         </div>
-    </div>
-    <div id="publisher"></div>
-</div>
-<script id="template-subcriber" type="text/x-handlebars-template">
-    <div class="container-bg">
-        <img class="bg-subcriber" src="http://www.mrwallpaper.com/wallpapers/Tropical-Island-1366x768.jpg" alt="">
-        <div class="container-avatar">
-            <img src="{{imgUrl}}"
-                 alt="avatar-subscriber" class="avatar">
-            <div class="name-subcriber">{{name}}</div>
-            {{#unless isDisconnect}}
-                {{#unless isNoAccepted}}
-                    <i class="fa fa-spinner fa-spin loading"></i>
-                    {{#unless isConnect}}
-                    <div class="status-call">Đang gọi...</div>
-                    {{else}}
-                    <div class="status-call">Đang kết nối...</div>
-                    {{/unless}}
-                {{else}}
-                    <div class="status-call">Từ chối cuôc gọi</div>
-                    <button type="button" class="btn btn-default" onclick="closeWindow()">Đóng</button>
-                {{/unless}}
-            {{else}}
-                <div class="status-call">Kết thúc cuôc gọi</div>
-                <button type="button" class="btn btn-default" onclick="closeWindow()">Đóng</button>
-            {{/unless}}
-        </div>
-    </div>
-</script>
-<script>
-    var peer_id = '<%= peer_id %>';
-</script>
-<script src="libs/jquery.min.js"></script>
-<script src="libs/bootstrap/js/bootstrap.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="libs/socket.io-client/dist/socket.io.js"></script>
-<script src="libs/handlebars.js"></script>
-<script type="text/javascript" src="js/videocall.js"></script>
+    </script>
+    <script>
+        var peer_id = '<%= peer_id %>';
+    </script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script type="text/javascript" src="js/videocall.js"></script>
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link href="css/randomcall.css" rel="stylesheet" type="text/css">
     <script src="https://static.opentok.com/v2/js/opentok.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -12,7 +12,7 @@
 
 <body>
     <div id="mainContent">
-        <div id="videoContent" >
+        <div id="videoContent">
             <div id="videos">
                 <div id="subscriber">
                     <div class="container-bg">
@@ -50,8 +50,7 @@
                 <div class="fbNubChatFooter">
                     <div class="_chatFooter">
                         <div class="chat-footer-box" style="min-height: 16px;">
-                            <input id="sendBox" onkeyup="sendMessage(event)" type="text"
-                                placeholder=" Nhập tin nhắn...">
+                            <input id="sendBox" onkeyup="sendMessage(event)" type="text" placeholder=" Nhập tin nhắn...">
                         </div>
                     </div>
                 </div>
@@ -117,11 +116,11 @@
     <script>
         var peer_id = '<%= peer_id %>';
     </script>
-    <script src="libs/jquery.min.js"></script>
-    <script src="libs/bootstrap/js/bootstrap.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="libs/socket.io-client/dist/socket.io.js"></script>
-    <script src="libs/handlebars.js"></script>
+    <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script src="js/handlebars.js"></script>
     <script type="text/javascript" src="js/randomcall.js"></script>
 </body>
 
