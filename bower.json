@@ -1,0 +1,26 @@
+{
+  "name": "learnjp",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "quangtm"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/quangtm210395/learnjp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "bootstrap": "latest",
+    "jquery":"latest"
+  }
+}
