@@ -1,8 +1,8 @@
 {
-  "name": "learn-japanese-together",
+  "name": "learnjp",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/quangtm210395/learn-japanese-together.git",
+  "main": "server/index.js",
+  "repository": "https://github.com/quangtm210395/learnjp.git",
   "author": "quangtm210395 <quangtmse04402@fpt.edu.vn>",
   "license": "MIT",
   "dependencies": {
@@ -28,7 +28,7 @@
     "postinstall": "bower install",
 
     "dev": "nodemon --watch ../* server/index.js",
-    
+
     "prestart": "npm install",
     "start": "node server/index.js"
   }

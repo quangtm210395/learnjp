@@ -25,10 +25,6 @@
 
 <body>
 
-    <!--<header class="header">
-
-</header>-->
-
     <nav class="navbar navbar-fixed-top">
         <div class="container-content">
             <div id="navbar" class="navbar-collapse ">
@@ -185,7 +181,6 @@
                         <div id="result-content-0-nr"></div>
                         <div class="col-md-6 col-xs-12 col-no-padding" id="word-result"></div>
                         <div class="col-md-6 col-xs-12" id="search-result-kanji"></div>
-
                     </div>
 
                     <!-- chu han -->
@@ -850,7 +845,7 @@
     <script id="status-login-template" type="text/x-handlebars-template">
         {{#if token}}
         <!-- <li><a id="click-profile" id="nav0" onclick="changeTab(0)">{{user.name}}</a></li> -->
-        <li id="nav3" onclick="changeTab(3)"><a class="text-ellipsis">{{user.name}}</a></li>
+        <li id="nav3" onclick="changeTab(3)"><a class="text-ellipsis" title="{{user.name}}">{{user.name}}</a></li>
         <li><a id="click-logout">Đăng xuất</a></li>
         {{else}}
         <li><a data-toggle="modal" data-target="#loginModal" id="click-login">Đăng nhập</a></li>
