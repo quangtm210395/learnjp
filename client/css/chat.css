@@ -1,0 +1,423 @@
+body div {
+    font-family: inherit;
+}
+
+.dockChat {
+    bottom: 0;
+    direction: 1tr;
+    /*height: 28px;*/
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 300;
+}
+
+.dockWrapperRight.dockChat {
+    left:auto;
+    right: 210px;
+}
+
+.fbDock {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 15px;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.rightNContainer {
+    float: right;
+}
+
+.fbNGroup, .fbDock .nContainer>div, .fbDock .fbNGroup>div {
+    float: left;
+    position: relative;
+}
+
+.chatTabs {
+    align-items: flex-end;
+    display: flex;
+}
+
+.chatTab {
+    position: relative;
+}
+
+.chatTabs .chatTab {
+    margin: 0 0 0 4px;
+    bottom: 0;
+    /*position: absolute;*/
+    width: 100%;
+}
+
+.left-relative {
+    float: left;
+    position: relative;
+}
+
+.rightNContainer .left-relative {
+    margin-left: 12px;
+}
+
+.fbNub.left-relative {
+    /*height: 28px;*/
+    width: 180px;
+    background: transparent;
+    border: 0;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+
+.opened>.fbNub.left-relative {
+    width: 260px;
+}
+
+.fbNubFlyoutTitlebar, .left-relative .noTitlebar, .left-relative.openToggler .fbNubFlyoutTitlebar {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.fbNubFlyoutTitlebar {
+    background-color: #4267b2;
+    border: 1px solid #2e4588;
+    cursor: pointer;
+    position: relative;
+}
+
+.fbNub.left-relative.highlightTab .fbNubButton, .fbNub.left-relative .fbNubFlyoutTitlebar {
+    background: #f6f7f9;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .20);
+    color: #191919;
+    height: 26px;
+    padding-right: 3px;
+    z-index: 2;
+}
+
+.fbNub.left-relative .fbNubFlyoutTitlebar {
+    border: 0;
+}
+
+.chatTitle-inside {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    outline: none;
+    overflow: hidden;
+}
+
+.fbNub.left-relative .titlebar .titlebarTextWrapper {
+    color: #4b4f56;
+    font-size: 12px;
+    line-height: 26px;
+    margin: 0 8px 3px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+._15p6 {
+    flex: 1;
+    overflow: hidden;
+    padding-top: 1px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.titlebarText {
+    color: #4b4f56;
+    padding-left: 10px;
+    font-size: 1.1em;
+}
+
+.fbNub.left-relative .titlebar .noLink {
+    text-decoration: none;
+}
+
+.opened.chatTab .fbNubFlyoutBody {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+}
+
+.fbNub .fbNubFlyoutBody {
+    display: none;
+}
+
+.chat-body {
+    position: relative;
+}
+
+.fbNub .fbNubChatBody {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.chatTab .fbNubChatBody {
+    background: #fff;
+}
+
+.fbNub.left-relative .fbNubChatFooter{
+    background: #fff;
+    min-height: 32px;
+}
+
+.fbNub.left-relative .fbNubChatFooter {
+    border: 0;
+    position: relative;
+}
+
+.chat-footer-box {
+    border-top: 1px solid #c9d0da;
+    /*border-top-width: 0;*/
+    cursor: text;
+    max-height: 77px;
+    min-height: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+.chat-footer-box>input {
+    border: 0px;
+    padding: 10px 8px 6px;
+    width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.chat-footer-box>input:focus {
+    border: 0px;
+    border-color: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+button:active {
+    outline: none;
+}
+
+.fbNub.left-relative .fbNubChatBody {
+    background-color: #fff;
+    border: 0;
+    background-clip: padding-box;
+}
+
+.fbNubChatBody {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+.fbNub.left-relative .fbNubFlyoutBodyContent,
+.fbNub.left-relative .conversationContainer {
+    height: 100%;
+    width: 100%;
+} 
+
+.chatContent {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+.tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.td {
+    letter-spacing: inherit;
+    text-align: left;
+    font-size: 12px;
+}
+
+.vBot {
+    padding: 0px;
+}
+
+.chatContent .vBot {
+    vertical-align: bottom;
+}
+
+.user-chat-logo {
+    margin-bottom: 3px;
+}
+
+.fbNub.left-relative .user-chat-unit {
+    margin-right: 9px;
+}
+
+.user-chat-unit {
+    align-items: flex-end;
+    display: flex;
+    margin: 10px 9px 10px 8px;
+    position: relative;
+} 
+
+.chat-friend {
+    justify-content: flex-start;
+}
+
+.chat-myself {
+    justify-content: flex-end;
+}
+
+.user-chat-unit .chat-logo {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 28px;
+}
+
+img {
+    border: 0;
+}
+
+.user-chat-unit .chat-logo img {
+    border-radius: 2px;
+    height: 28px;
+    width: 28px;
+}
+
+.user-chat-unit .chat-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.direction_ltr {
+    direction: ltr;
+}
+
+.chat-unit {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.28;
+    padding: 0 0 1px 0;
+    text-align: left;
+}
+
+.chat-unit-content {
+    flex-direction: column;
+}
+
+.chat-unit .cuc-1 {
+    margin-left: 8px;
+    min-height: 24px;
+    clear: left;
+    float: left;
+    position: relative;
+}
+
+.cuc-2 {
+    border: 0;
+    color: #4b4f56;
+    min-height: 22px;
+    min-width: 14px;
+    overflow: hidden;
+    position: relative;
+    /*white-space: pre-wrap;*/
+}
+
+.chat-unit .cuc-2 {
+    background-color: #f1f0f0;
+    float: left;
+    max-width: 164px;
+    word-wrap: break-word;
+    border-radius: 12px;
+}
+
+.chat-unit:only-of-type .cuc-2 {
+    margin: 2px 0;
+}
+
+.cuc-3 {
+    padding: 5px 8px 4px;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.chat-myself .chat-unit .cuc-2 {
+    background-color: #16bd67;
+    color: white;
+}
+
+.close_X {
+    flex: 0 0 46px;
+    flex-direction: column;
+    margin-top: 3px;
+}
+
+.fbNub.left-relative .titlebar .button {
+    display: inline-block;
+    height: 26px;
+    vertical-align: center;
+    font-weight: 100;
+}
+
+.close {
+    opacity: .7;
+    transition: opacity .15s;
+    -webkit-user-drag: none;
+    width: 22px;
+    color: #989696;
+    text-align: center;
+}
+
+.fbNub.left-relative .titlebar .button.close:hover {
+    color: #000000;
+}
+
+.closed #callBtn {
+    display: none;
+}
+
+.noteChat {
+    clear: both;
+    color: #90949c;
+    font-size: 11px;
+    margin-left: 44px;
+    margin-right: 9px;
+    padding-bottom: 5px;
+    -webkit-user-select: none;
+    visibility: hidden;
+}
+
+.noteChat.isTyping {
+    display: inline-block;
+    visibility: visible;
+}
+
+.greenChatTitle {
+    background-color: #16bd67 !important;
+}
+
+.greenChatTitle .titlebarText,
+.greenChatTitle .close {
+    color: #ffffff;
+}

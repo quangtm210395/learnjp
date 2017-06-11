@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link href="css/randomcall.css" rel="stylesheet" type="text/css">
+    <script src="https://static.opentok.com/v2/js/opentok.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div id="mainContent">
+        <div id="videoContent" >
+            <div id="videos">
+                <div id="subscriber">
+                    <div class="container-bg">
+                        <img class="bg-subcriber" src="http://www.mrwallpaper.com/wallpapers/Tropical-Island-1366x768.jpg" alt="">
+                        <div class="container-avatar">
+                            <i class="fa fa-spinner fa-spin loading"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="publisher"></div>
+            </div>
+
+        </div>
+
+        <div class="chatContainer hidden" id="chatContent">
+            <div class="fbNubFlyoutBody chat-body" onclick="chatFocus()">
+                <div class="fbNubChatBody" id="nubBox">
+                    <div class="fbNubFlyoutBodyContent">
+                        <div class="table conversationContainer chatContent">
+                            <div class="tbody">
+                                <div class="vBot tr">
+                                    <div style="height:176px">
+                                        <div id="chatBox">
+
+                                        </div>
+                                        <div class="noteChat" id="textTyping{{friend._id}}">
+                                            <span>{{friend.name}} is typing ...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fbNubChatFooter">
+                    <div class="_chatFooter">
+                        <div class="chat-footer-box" style="min-height: 16px;">
+                            <input id="sendBox" onkeyup="sendMessage(event)" type="text"
+                                placeholder=" Nhập tin nhắn...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="template-chat-friend" type="text/x-handlebars-template">
+        <div class="user-chat-unit chat-friend">
+            <div class="chat-content">
+                <div class="group">
+                    <div class="chat-unit direction_ltr">
+                        <div class="chat-unit-content">
+                            <div class="cuc-1">
+                                <div class="cuc-2">
+                                    <div class="cuc-3">
+                                        <span>{{message}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="template-chat-myself" type="text/x-handlebars-template">
+        <div class="user-chat-unit chat-myself">
+            <div class="chat-content">
+                <div class="group">
+                    <div class="chat-unit row-reverse direction_ltr">
+                        <div class="chat-unit-content">
+                            <div class="cuc-1">
+                                <div class="cuc-2">
+                                    <div class="cuc-3">
+                                        <span>{{message}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </script>
+    <script id="template-subcriber" type="text/x-handlebars-template">
+        <div class="container-bg">
+            <img class="bg-subcriber" src="http://www.mrwallpaper.com/wallpapers/Tropical-Island-1366x768.jpg" alt="">
+            <div class="container-avatar">
+                {{#unless isSearch}}
+                <img src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/supportmale-2-512.png" alt="avatar-subscriber" class="avatar">                {{#unless isDisconnect}}
+                <i class="fa fa-spinner fa-spin loading"></i> {{#if isConnect}}
+                <div class="status-call">Đang kết nối...</div>
+                {{/if}} {{else}}
+                <div class="status-call">Kết thúc cuôc gọi</div>
+                <button type="button" class="btn btn-default" onclick="closeWindow()">Đóng</button> {{/unless}} {{else}}
+                <i class="fa fa-spinner fa-spin loading"></i>
+                <div class="status-call">Đang tìm kiếm...</div>
+                {{/unless}}
+
+            </div>
+        </div>
+    </script>
+    <script>
+        var peer_id = '<%= peer_id %>';
+    </script>
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="libs/socket.io-client/dist/socket.io.js"></script>
+    <script src="libs/handlebars.js"></script>
+    <script type="text/javascript" src="js/randomcall.js"></script>
+</body>
+
+</html>

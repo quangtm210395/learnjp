@@ -1,0 +1,30 @@
+{
+  "name": "learn-japanese-together",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/quangtm210395/learn-japanese-together.git",
+  "author": "quangtm210395 <quangtmse04402@fpt.edu.vn>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.4.0",
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.1",
+    "composable-middleware": "^0.3.0",
+    "crypto": "0.0.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.9.9",
+    "opentok": "^2.5.0",
+    "socket.io": "^1.7.4",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "dev": "nodemon --watch ../* server/index.js",
+    "start": "node server/index.js"
+  }
+}

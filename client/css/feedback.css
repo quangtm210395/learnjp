@@ -1,0 +1,29 @@
+.feedback {
+    text-align: center;
+}
+
+.feedback-form {
+    margin-top: 15px;
+}
+
+#all-feedback {
+    margin-top: 15px;
+}
+
+.feedback-title {
+    font-size: 20px;
+    color: #28cc77;
+    margin-bottom: 2px;
+}
+
+.feedback-date {
+    font-size: 12px;
+}
+
+.feedback-content {
+    padding: 0 30px;
+}
+
+#feedback-load {
+    margin-bottom: 25px;
+}

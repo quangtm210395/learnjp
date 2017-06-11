@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="vi" class="sidebarMode">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/col-css.css">
+    <link rel="stylesheet" type="text/css" href="css/style-css.css">
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
+    <link rel="stylesheet" type="text/css" href="css/feedback.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+
+    <link rel="icon" href="imgs/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
+
+    <title>Cùng nhau học tiếng Nhật</title>
+</head>
+
+<body>
+
+    <!--<header class="header">
+
+</header>-->
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-content">
+            <div id="navbar" class="navbar-collapse ">
+                <ul class="nav navbar-nav">
+                    <li class="active" id="nav0" onclick="changeTab(0)">
+                        <a>
+                            <i class="fa fa-search fa-fw fa-lg"></i> Tra từ
+                        </a>
+                    </li>
+                    <li id="nav1" onclick="changeTab(1)">
+                        <a>
+                            <i class="fa fa-commenting-o fa-fw fa-lg"></i> Đánh giá
+                        </a>
+                    </li>
+                    <li id="nav2" onclick="randomCall()">
+                        <a>
+                            <i class="ion-android-call fa-fw fa-lg"></i> Trò chuyện ngẫu nhiên
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="status-login">
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                    <div role="tabpanel">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" id="tab-signIn"><a href="#signIn" aria-controls="signIn" role="tab" data-toggle="tab">Đăng nhập</a>
+
+                            </li>
+                            <li role="presentation" id="tab-signUp"><a href="#signUp" aria-controls="signUp" role="tab" data-toggle="tab">Đăng
+                            kí</a>
+
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane" id="signIn">
+                                <form id="login-form">
+                                    <div class="form-group required">
+                                        <label for="username_login" class="control-label">Tên đăng nhập:</label>
+                                        <input type="text" class="form-control" id="username_login" name="username_login" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="password_login" class="control-label">Mật khẩu:</label>
+                                        <input type="password" class="form-control" id="password_login" name="password_login" onkeypress="pressEnterLogin(event)"
+                                            required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary save" id="login">
+                                    <i class="fa fa-spinner fa-spin"  style="display: none" id="loading-login"></i>
+                                    Đăng nhập
+                                </button>
+                                </form>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="signUp">
+                                <form id="register-form">
+                                    <div class="form-group required">
+                                        <label for="username_register" class="control-label">Tên đăng nhập:</label>
+                                        <input type="text" class="form-control" id="username_register" name="username_register" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="password_register" class="control-label">Mật khẩu:</label>
+                                        <input type="password" class="form-control" id="password_register" name="password_register" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="verify_password" class="control-label">Nhâp lại mật khẩu:</label>
+                                        <input type="password" class="form-control" id="verify_password" name="verify_password" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="full_name" class="control-label">Họ và tên:</label>
+                                        <input type="text" class="form-control" id="full_name" name="full_name" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="email" class="control-label">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="dob" class="control-label">Ngày sinh:</label>
+                                        <input type="date" class="form-control" id="dob" value="2000-12-30" name="dob" required>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="gender" class="control-label">Giới tính:</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                        <option>Nam</option>
+                                        <option>Nữ</option>
+                                        <option>Khác</option>
+                                    </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="avatar-url" class="control-label">Ảnh đại diện: (URL)</label>
+                                        <input type="text" class="form-control" id="avatar-url" name="avatar-url" onkeypress="pressEnterRegister(event)">
+                                    </div>
+                                    <button type="button" class="btn btn-primary save" id="register">
+                                    <i class="fa fa-spinner fa-spin"  style="display: none" id="loading-register"></i>
+                                    Đăng kí
+                                </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="incommingCall"></div>
+
+    <div class="container-content2" id="main-container">
+        <div class="row">
+            <div id="viewContent" class="col-md-12 col-xs-12">
+                <div class="search-input-container">
+                    <div class="btn-group search-option">
+                        <button class="btn btn-default search-option-word tab-active" id="tab0" onclick="changeTypeSearch(0)">
+                        <span>Từ vựng</span>
+                    </button>
+                        <button class="btn btn-default search-option-kanji" id="tab1" onclick="changeTypeSearch(1)"><span>Hán tự</span>
+                    </button>
+                        <button class="btn btn-default search-option-example" id="tab2" onclick="changeTypeSearch(2)"><span>Câu</span>
+                    </button>
+                        <button class="btn btn-default search-option-grammar" id="tab3" onclick="changeTypeSearch(3)"><span>Ngữ pháp</span>
+                    </button>
+                    </div>
+
+                    <div class="input-group input-group-lg search-box-range col-xs-12 col-md-8 col-no-padding">
+                        <input type="text" placeholder="日本, nihon, Nhật Bản" maxlength="64" id="search-text-box" class="form-control" 　focus-me="">
+                        <button type="button" class="btn btn-link " onclick="clearSearchText()" id="clear-search-text">
+                        <span class="fa fa-times fa-lg"></span>
+                    </button>
+                        <!-- ngIf: queryNotNull() -->
+
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary" id="search-button">
+                            <span class="fa fa-search fa-lg" id="search-btn"></span>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-container col-md-12 col-xs-12 no-padding" id="tab-container">
+
+                    <!-- Tu vung -->
+                    <div class="col-xs-12 result result-word " id="result-content-0">
+                        <div id="result-content-0-nr"></div>
+                        <div class="col-md-6 col-xs-12 col-no-padding" id="word-result"></div>
+                        <div class="col-md-6 col-xs-12" id="search-result-kanji"></div>
+
+                    </div>
+
+                    <!-- chu han -->
+                    <div class="col-md-6 col-xs-12 result result-kanji dis-cont" id="result-content-1">
+                        <div id="result-content-1-nr"></div>
+                        <div class="list-kanji" id="list-kanji">
+                        </div>
+                        <div class="col-sx-12" id="kanji-detail-result"></div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 result result-example dis-cont" id="result-content-2"></div>
+
+                    <div class="col-md-6 col-xs-12 result result-grammar dis-cont" id="result-content-3">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Row 1 : Dictionary -->
+
+        <div class="row">
+            <div id="feedback" style="display: none">
+                <div class="container-fluid">
+                    <form class="feedback-form">
+                        <div class="form-group required">
+                            <label for="feedback-title" class="control-label">Tiêu đề:</label>
+                            <input type="text" class="form-control" id="feedback-title" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="feedback-content" class="control-label">Nội dung:</label>
+                            <textarea class="form-control" rows="5" id="feedback-content" required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="send-feedback">Gửi đánh giá</button>
+                        <button type="button" class="btn btn-primary" id="get-feedback">Xem đánh giá</button>
+                    </form>
+
+                    <div id="all-feedback">
+                    </div>
+
+                    <button id="feedback-load" class="btn btn-primary btn-lg" style="display: none">
+                    Load more
+                    <!-- <i class="fa fa-spinner fa-spin"></i> Loading -->
+                </button>
+                </div>
+
+
+                <script id="feedback-template" type="text/x-handlebars-template">
+                    {{#each feedbacks}}
+                    <div class="well">
+                        <p class="feedback-title">{{title}}</p>
+                        <p class="feedback-date">{{createdAt}}</p>
+                        <p class="feedback-content">{{content}}</p>
+                    </div>
+                    {{/each}}
+                </script>
+            </div>
+        </div>
+        <!-- Row 2 : Feedback -->
+
+        <div class="row">
+            <div id="profile" style="display: none">
+                <div class="container-fluid">
+                    <form id="profile_form">
+                        <div class="form-group required">
+                            <label for="profile_username" class="control-label">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" id="profile_username" name="profile_username" required disabled>
+                        </div>
+                        <div class="form-group required">
+                            <label for="profile_fullname" class="control-label">Họ và tên:</label>
+                            <input type="text" class="form-control" id="profile_fullname" name="profile_fullname" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="profile_email" class="control-label">Email:</label>
+                            <input type="email" class="form-control" id="profile_email" name="profile_email" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="profile_dob" class="control-label">Ngày sinh:</label>
+                            <input type="date" class="form-control" id="profile_dob" name="profile_dob" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="profile_gender" class="control-label">Giới tính:</label>
+                            <select class="form-control" id="profile_gender" name="profile_gender" required>
+                            <option>Nam</option>
+                            <option>Nữ</option>
+                            <option>Khác</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_avatar-url" class="control-label">Ảnh đại diện: (URL)</label>
+                            <input type="text" class="form-control" id="profile_avatar-url" name="profile_avatar-url" onkeypress="pressEnterRegister(event)">
+                        </div>
+                        <button type="button" class="btn btn-primary save" id="update">
+                            <i class="fa fa-spinner fa-spin"  style="display: none" id="loading-update"></i>
+                            Cập nhật
+                        </button>
+                        <button type="button" class="btn btn-primary save" id="nav4" onclick="changeTab(4)">Thay đổi mật
+                        khẩu
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Row 3 : Profile -->
+
+        <div class="row">
+            <div id="password" style="display: none">
+                <div class="container-fluid">
+                    <form id="password_form">
+                        <div class="form-group required">
+                            <label for="old_password" class="control-label">Mật khẩu cũ:</label>
+                            <input type="password" class="form-control" id="old_password" name="old_password" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="new_password" class="control-label">Mật khẩu mới:</label>
+                            <input type="password" class="form-control" id="new_password" name="new_password" required>
+                        </div>
+                        <div class="form-group required">
+                            <label for="verify_new_password" class="control-label">Nhâp lại mật khẩu mới:</label>
+                            <input type="password" class="form-control" id="verify_new_password" name="verify_new_password" required>
+                        </div>
+                        <button type="button" class="btn btn-primary save" id="update_password">
+                            <i class="fa fa-spinner fa-spin"  style="display: none" id="loading-update-password"></i>
+                            Cập nhật
+                            </button>
+                        <button type="button" class="btn btn-primary save" id="nav3" onclick="changeTab(3)">Thay đổi hồ sơ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Row 4 : Password -->
+
+        <aside id="viewAside" class="users-status chatSidebar fixed_always">
+        </aside>
+
+        <div id="viewChat">
+            <div class="dockChat dockWrapperRight ">
+                <div class="fbDock">
+                    <div class="rightNContainer nContainer">
+                        <div id="ChatTabsPageLet">
+                            <div class="fbNGroup">
+                                <div class="chatTabs" id="chatTabs">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+
+    </footer>
+
+    <!--incoming call-->
+    <script id="template-incomming-call" type="text/x-handlebars-template">
+        <div class="modal fade" id="incommingCallModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="incommingcallmdLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    </button>
+                        <h5 class="modal-title" id="exampleModalLabel">{{name}} is calling</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="rejectCall('{{_id}}')">Bỏ qua
+                    </button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="acceptCall('{{_id}}')">
+                        Chấp nhận
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--chat-->
+    <script id="template-chat-tab-content" type="text/x-handlebars-template">
+        <!--each -->
+        {{#each messages}}
+        <div class="user-chat-unit {{_chatCss}}">
+            {{#if _isFriend}}
+            <div class="user-chat-logo">
+                <div class="chat-logo">
+                    <img src="{{../friend.imgUrl}}" alt="">
+                </div>
+            </div>
+            {{/if}}
+            <div class="chat-content">
+                <div class="group">
+                    <div class="chat-unit {{_reverseCss}} direction_ltr">
+                        <div class="chat-unit-content">
+                            <div class="cuc-1">
+                                <div class="cuc-2">
+                                    <div class="cuc-3">
+                                        <span>{{content}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <!--/each -->
+    </script>
+
+
+    <script id="template-chat-tabs" type="text/x-handlebars-template">
+        <div class="chatTab opened" id="chatTab{{friend._id}}">
+            <div class="fbNub left-relative">
+                <div class="fbNubFlyoutTitlebar titlebar" id="title{{friend._id}}">
+                    <div class="chatTitle-inside">
+                        <div class="titlebarTextWrapper _15p6" onclick="showChatTab('{{friend._id}}')">
+                            <span class="titlebarText noLink">
+                                 {{friend.name}}
+                             </span>
+                        </div>
+                        <div class="close_X">
+                            <a class="close button" onclick="closeChatTab('{{friend._id}}')" data-hover="tooltip">
+                                <i class="ion-android-close" aria-hidden="true"></i>
+                            </a>
+                            <a class="close button" id="callBtn" onclick="videoCall('{{friend._id}}')">
+                                <i class="ion-android-call" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="fbNubFlyoutBody chat-body" onclick="chatFocus('{{friend._id}}')">
+                    <div class="fbNubChatBody" id="nub{{friend._id}}">
+                        <div class="fbNubFlyoutBodyContent">
+                            <div class="table conversationContainer chatContent">
+                                <div class="tbody">
+                                    <div class="tr vBot">
+                                        <div style="height:176px">
+                                            <div id="chat{{friend._id}}">
+                                                {{generateChatContent this}}
+                                            </div>
+                                            <div class="noteChat" id="textTyping{{friend._id}}">
+                                                <span>{{friend.name}} is typing ...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fbNubChatFooter">
+                        <div class="_chatFooter">
+                            <div class="chat-footer-box" style="min-height: 16px;">
+                                <input id="send{{friend._id}}" onfocus="chatFocus('{{friend._id}}')" onkeyup="sendMessage(event, '{{friend._id}}')" type="text"
+                                    placeholder=" Nhập tin nhắn...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="template-chat-friend" type="text/x-handlebars-template">
+        <div class="user-chat-unit chat-friend">
+            <div class="user-chat-logo">
+                <div class="chat-logo">
+                    <img src="{{imgUrl}}" alt="">
+                </div>
+            </div>
+            <div class="chat-content">
+                <div class="group">
+                    <div class="chat-unit direction_ltr">
+                        <div class="chat-unit-content">
+                            <div class="cuc-1">
+                                <div class="cuc-2">
+                                    <div class="cuc-3">
+                                        <span>{{message}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="template-chat-myself" type="text/x-handlebars-template">
+        <div class="user-chat-unit chat-myself">
+            <div class="chat-content">
+                <div class="group">
+                    <div class="chat-unit row-reverse direction_ltr">
+                        <div class="chat-unit-content">
+                            <div class="cuc-1">
+                                <div class="cuc-2">
+                                    <div class="cuc-3">
+                                        <span>{{message}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </script>
+
+    <!-- tu vung -->
+
+    <script id="template-vocab-all" type="text/x-handlebars-template">
+        {{searchResultWord found data word}}
+    </script>
+
+    <script id="template-no-result" type="text/x-handlebars-template">
+        <div class="no-result">
+            Không tìm thấy {{type}}: {{word}}
+        </div>
+    </script>
+    <script id="template-vocab-result" type="text/x-handlebars-template">
+        <div class="words-list ">
+            <div class="word-container widget-container">
+                <!-- main word-->
+                <div class="main-word ">
+                    {{word}}
+                </div>
+
+                <!--audio-->
+                <div class="audio-word fa fa-volume-down fa-lg" onclick="playAudio('{{word}}')">
+
+                </div>
+
+                <!-- -->
+                <div class="phonetic-word japanese-char  ">
+                    {{phonetic}}
+                </div>
+
+                <div class="han-viet-word  ">
+
+                </div>
+
+                <!--detail-->
+                <div class="mean-detail-range ">
+                    <!--each means-->
+                    {{#each means}}
+                    <div class="each-word">
+                        <div class="mean-fr-word ">
+                            ◆ {{mean}}
+                        </div>
+                        <div class="example-range">
+                            <!--each examples-->
+                            {{#each examples}}
+                            <div class="example-container ">
+                                <div class="example-word sentence-exam">
+                                    <span>{{content}}</span>
+                                </div>
+                                <div class="example-mean-word sentence-exam">
+                                    <span>{{mean}}</span>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+    </script>
+
+    <script id="template-vocab-related" type="text/x-handlebars-template">
+        <div class="suggest-list">
+            <div class="suggest-title">
+                Các từ liên quan đến
+                <strong>{{word}}</strong>
+            </div>
+        </div>
+        <!--each-->
+        {{#each results}}
+        <div>
+            <div class="suggest-box">
+                <div id="{{_id}}" onclick="showWordDetail('{{_id}}')" role="button">
+                    <p>
+                        <span class="ja">{{word}}</span> {{phonetic}}
+                    </p>
+                    {{#each means}}
+                    <p>
+                        ◆ {{mean}}
+                    </p>
+                    {{/each}}
+                </div>
+                <div id="detail_{{_id}}" class="hide">
+                    {{detailRelatedWord this}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <!--end each-->
+    </script>
+
+    <script id="template-vocab-result-kanji" type="text/x-handlebars-template">
+        <div class="panel-group">
+            <p>
+                Các chữ hán trong
+                <strong>{{word}}</strong>
+            </p>
+            {{#each kanjis}}
+            <div class="panel panel-default">
+                <div class="panel-heading" role="button" id="heading{{@index}}" data-toggle="collapse" href="#collapse{{@index}}" aria-expanded="false"
+                    aria-controls="collapse{{@index}}">
+                    <h4 class="panel-title">
+                        <span class="kanji">
+                            {{kanji}}
+                        </span> 「{{on}}」
+                        <strong class="mean">{{mean}}</strong>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" id="collapse{{@index}}" aria-labelledby="heading{{@index}}" aria-expanded="false" style="height: 0px;">
+                    <div class="panel-body">
+                        {{searchResultKanji this}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </script>
+
+    <script id="template-kanji-all" type="text/x-handlebars-template">
+        {{appendResultKanji status results}}
+    </script>
+
+    <script id="template-kanji-result" type="text/x-handlebars-template">
+        <div class="btn-group">
+            {{#each results}}
+            <button type="button" class="btn btn-default btn-lg draw-single-kanji selected" id="{{@index}}" onclick="changeKanji('{{@index}}')">
+                {{kanji}}
+            </button> {{/each}}
+        </div>
+    </script>
+
+    <script id="template-kanji-content" type="text/x-handlebars-template">
+        <div class="kanji-container">
+            <div>
+                <div class="kanji-main-infor widget-container">
+                    <div class="pronoun-item">
+                        <span class="kunyomi-text">Bộ: </span>
+                        <span>
+                                                    {{kanji}} {{mean}}
+                                                </span>
+                    </div>
+                    <div class="pronoun-item japanese-char ">
+                        <span class="kunyomi-text">訓: </span>
+                        <span>
+                                                    {{kun}}
+                                                </span>
+                    </div>
+                    <div class="pronoun-item japanese-char ">
+                        <span class="kunyomi-text">音: </span>
+                        <span>
+                                                    {{on}}
+                                                </span>
+                    </div>
+                    <div class="pronoun-item japanese-char ">
+                        <span class="kunyomi-text">Số nét: </span> {{stroke_count}}
+                    </div>
+                    <div class="level">
+                        <span class="kunyomi-text">JLPT: </span> N{{level}}
+                    </div>
+                    <div class="comp-detail">
+                        <span class="kunyomi-text">Bộ thành phần: </span> {{#if compDetail}} {{#each compDetail}}
+                        <span class="kanji-component">
+                            {{w}}
+                            <span>
+                                {{h}}
+                            </span>
+                        </span>
+                        {{/each}} {{/if}} </div>
+                    <div class="short-mean">
+                        <span class="kunyomi-text">Nghĩa: </span> {{title}}
+                        <ul class="list-collapse kanjiId{{id}}">
+                            <span class="kunyomi-text">Giải nghĩa: </span> {{#each details}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                        <p onclick="showCollapse('{{id}}')" class="button-collapse ">
+                            <i class="iId{{id}} fa fa-angle-double-down fa-lg"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="template-sentence-result" type="text/x-handlebars-template">
+        <div class="examples-list widget-container">
+            {{#each results}}
+            <!--if vn-->
+            {{#checkSentence status 2}}
+            <div class="example-container">
+                <div class="example-index">
+                    {{@index}}.
+                </div>
+                <div class="example-word sentence-exam">
+                    <span>{{content}}</span>
+                </div>
+                <div class="example-mean-word sentence-exam">
+                    <span class="japanese-char">
+                        <ruby>
+                            {{mean}}
+                            <rt>{{transcription}}</rt>
+                        </ruby>
+                        {{#if mean_vn}}
+                        <ruby class="vietnamese-char">
+                            {{mean_vn}}
+                        </ruby>
+                        {{/if}}
+                    </span>
+                </div>
+            </div>
+            {{/checkSentence}}
+
+            <!--if ja-->
+            {{#checkSentence status 1}}
+            <div class="example-container">
+                <div class="example-index">
+                    {{@index}}.
+                </div>
+                <div class="example-word sentence-exam">
+                    <span class="japanese-char">
+                        <ruby>
+                            {{content}}
+                            <rt>{{transcription}}</rt>
+                        </ruby>
+                    </span>
+                </div>
+                <div class="example-mean-word sentence-exam">
+                    <span class="vietnamese-char">
+                        <ruby>
+                            {{mean}}
+                        </ruby>
+                    </span>
+                </div>
+            </div>
+            {{/checkSentence}} {{/each}}
+        </div>
+    </script>
+
+    <script id="template-grammar-result" type="text/x-handlebars-template">
+        <div class="grammar-list">
+            {{#each results}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="#{{_id}}" class="grammar-open-link collapsed" data-toggle="collapse" data-parent="#grammar-list" aria-expanded="false">
+                            <div class="grammar-item-list">
+                                {{level}}:{{title}}
+                            </div>
+                            <div class="grammar-item-mean ">
+                                {{desc}}
+                            </div>
+                        </a>
+                    </h4>
+                </div>
+                <div style="height: 0px;" class="panel-collapse collapse" id="{{_id}}">
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        </div>
+    </script>
+
+    <script id="template-grammar-usages" type="text/x-handlebars-template">
+        <div class="panel-body">
+            {{#each usages}}
+            <div class="grammar-usages">
+                <div class="gr-use-synopsis japanese-char">
+                    {{synopsis}}
+                </div>
+                <div class="gr-use-explain">
+                    <div class="gr-use-title">意味：</div>
+                    <span>{{mean}}</span>
+                </div>
+                <div class="example-title">例：</div>
+                {{#each examples}}
+                <div class="example-container">
+                    <div class="example-index">
+                        {{@index}}.
+                    </div>
+                    <div class="example-word sentence-exam">
+                        <span class="japanese-char">
+                             <ruby>
+                                  {{content}}
+                                  <rt>{{transcription}}</rt>
+                             </ruby>
+                        </span>
+                    </div>
+                    <div class="example-mean-word sentence-exam">
+                        <span class="vietnamese-char">
+                            <p>{{mean}}</p>
+                        </span>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="gr-use-note">
+                    <div class="gr-explain-title">説明:</div>
+                    <div class="gr-explain-note">
+                        {{explain}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </script>
+
+    <!-- user template -->
+    <script id="users-status-template" type="text/x-handlebars-template">
+        <div class="chatSidebar">
+            <ul>
+                {{#each users}} {{#if isOnline}}
+                <li id="{{_id}}" onclick="regisChat('{{_id}}', '{{name}}')">
+                    <div class="userAva">
+                        <img src="{{imgUrl}}" alt="">
+                    </div>
+                    <div class="userStatus">
+                        <div style="display:block">
+                            <a>
+                                <p class="usernameText">{{name}}</p>
+                            </a>
+                            <span class="pull-right">
+                                <i class="fa fa-circle status-online" aria-hidden="true">
+                                </i>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                {{/if}} {{/each}} {{#each users}} {{#unless isOnline}}
+                <li id="{{_id}}" onclick="regisChat('{{_id}}', '{{name}}')">
+                    <div class="userAva">
+                        <img src="{{imgUrl}}" alt="">
+                    </div>
+                    <div class="userStatus">
+                        <div style="display:block">
+                            <a>
+                                <p class="usernameText">{{name}}</p>
+                            </a>
+                            <span class="pull-right">
+                                <i class="fa fa-circle status-offline" aria-hidden="true">
+                                </i>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                {{/unless}} {{/each}}
+            </ul>
+            <div class="user-search">
+                <label for="">
+                <i class="fa fa-search fa-sm" aria-hidden="true"></i>
+                <input type="text" value="{{searchText}}" id="user-search-input" onkeyup="searchUser(event)"
+                       placeholder="Tìm kiếm">
+                <i class="ion-android-close fa-lg" aria-hidden="true" onclick="cancelSearch()"></i>
+            </label>
+            </div>
+        </div>
+    </script>
+
+    <script id="status-login-template" type="text/x-handlebars-template">
+        {{#if token}}
+        <!-- <li><a id="click-profile" id="nav0" onclick="changeTab(0)">{{user.name}}</a></li> -->
+        <li id="nav3" onclick="changeTab(3)"><a class="text-ellipsis">{{user.name}}</a></li>
+        <li><a id="click-logout">Đăng xuất</a></li>
+        {{else}}
+        <li><a data-toggle="modal" data-target="#loginModal" id="click-login">Đăng nhập</a></li>
+        <li><a data-toggle="modal" data-target="#loginModal" id="click-register">Đăng kí</a></li>
+        {{/if}}
+    </script>
+
+    <script src="libs/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="libs/socket.io-client/dist/socket.io.js"></script>
+    <script src="libs/handlebars.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
+    <script type="text/javascript" src="js/feedback.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
+    <script type="text/javascript" src="js/libs.js"></script>
+
+</body>
+
+</html>

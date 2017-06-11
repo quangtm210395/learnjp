@@ -1,0 +1,406 @@
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body div {
+    font-family: inherit;
+}
+
+#videoContent {
+    z-index: 100;
+}
+
+#videos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#subscriber {
+    z-index: 10;
+}
+
+#publisher {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 20;
+    border: 3px solid white;
+    border-radius: 3px;
+}
+
+.bg-subcriber{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+}
+
+.container-bg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.container-bg .container-avatar{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#subscriber .avatar{
+    border: 4px solid white;
+    width: 15%;
+    border-radius: 50%;
+    height: auto;
+}
+
+.name-subcriber, .status-call {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    max-width: 40%;
+    text-align: center;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: white;
+    font-weight: 300;
+    font-size: 1.2em;
+}
+
+.status-call{
+    margin-top: 16px;
+    font-size: 1em;
+}
+
+.container-bg .loading{
+    margin-top: 16px;
+    color: white;
+    font-size: 2em;
+}
+
+.chatContainer {
+    position: fixed;
+    top : 0;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.found .hidden {
+    display: block!important;
+}
+
+.found #videoContent {
+    padding-right: 300px;
+}
+
+#chatContent .fbNubFlyoutBody {
+    height: 100%;
+}
+
+
+.opened.chatTab .fbNubFlyoutBody {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+}
+
+.fbNubFlyoutBody {
+    /*display: none;*/
+}
+
+.chat-body {
+    position: relative;
+}
+
+.fbNubChatBody {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.chatTab .fbNubChatBody {
+    background: #fff;
+}
+
+ .fbNubChatFooter{
+    background: #fff;
+    min-height: 32px;
+}
+
+ .fbNubChatFooter {
+    border: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.chat-footer-box {
+    border-top: 1px solid #c9d0da;
+    /*border-top-width: 0;*/
+    cursor: text;
+    max-height: 77px;
+    min-height: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+.chat-footer-box>input {
+    border: 0px;
+    padding: 10px 8px 6px;
+    width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.chat-footer-box>input:focus {
+    border: 0px;
+    border-color: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+button:active {
+    outline: none;
+}
+
+.fbNubChatBody {
+    background-color: transparent;
+    border: 0;
+    background-clip: padding-box;
+}
+
+.fbNubChatBody {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
+    padding-bottom: 33px;
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+ .fbNubFlyoutBodyContent,
+ .conversationContainer {
+    height: 100%;
+    width: 100%;
+} 
+
+.chatContent {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+.tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.td {
+    letter-spacing: inherit;
+    text-align: left;
+    font-size: 12px;
+}
+
+.vBot {
+    padding: 0px;
+}
+
+.chatContent .vBot {
+    vertical-align: bottom;
+}
+
+.user-chat-logo {
+    margin-bottom: 3px;
+}
+
+ .user-chat-unit {
+    margin-right: 9px;
+}
+
+.user-chat-unit {
+    align-items: flex-end;
+    display: flex;
+    margin: 10px 9px 10px 8px;
+    position: relative;
+} 
+
+.chat-friend {
+    justify-content: flex-start;
+}
+
+.chat-myself {
+    justify-content: flex-end;
+}
+
+.user-chat-unit .chat-logo {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 28px;
+}
+
+img {
+    border: 0;
+}
+
+.user-chat-unit .chat-logo img {
+    border-radius: 2px;
+    height: 28px;
+    width: 28px;
+}
+
+.user-chat-unit .chat-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.direction_ltr {
+    direction: ltr;
+}
+
+.chat-unit {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.28;
+    padding: 0 0 1px 0;
+    text-align: left;
+}
+
+.chat-unit-content {
+    flex-direction: column;
+}
+
+.chat-unit .cuc-1 {
+    margin-left: 8px;
+    min-height: 24px;
+    clear: left;
+    float: left;
+    position: relative;
+}
+
+.cuc-2 {
+    border: 0;
+    color: #4b4f56;
+    min-height: 22px;
+    min-width: 14px;
+    overflow: hidden;
+    position: relative;
+    /*white-space: pre-wrap;*/
+}
+
+.chat-unit .cuc-2 {
+    background-color: #f1f0f0;
+    float: left;
+    max-width: 164px;
+    word-wrap: break-word;
+    border-radius: 12px;
+}
+
+.chat-unit:only-of-type .cuc-2 {
+    margin: 2px 0;
+}
+
+.cuc-3 {
+    padding: 5px 8px 4px;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.chat-myself .chat-unit .cuc-2 {
+    background-color: #16bd67;
+    color: white;
+}
+
+.close_X {
+    flex: 0 0 46px;
+    flex-direction: column;
+    margin-top: 3px;
+}
+
+ .titlebar .button {
+    display: inline-block;
+    height: 26px;
+    vertical-align: center;
+    font-weight: 100;
+}
+
+.close {
+    opacity: .7;
+    transition: opacity .15s;
+    -webkit-user-drag: none;
+    width: 22px;
+    color: #989696;
+    text-align: center;
+}
+
+ .titlebar .button.close:hover {
+    color: #000000;
+}
+
+.closed #callBtn {
+    display: none;
+}
+
+.noteChat {
+    clear: both;
+    color: #90949c;
+    font-size: 11px;
+    margin-left: 44px;
+    margin-right: 9px;
+    padding-bottom: 5px;
+    -webkit-user-select: none;
+    visibility: hidden;
+}
+
+.noteChat.isTyping {
+    display: inline-block;
+    visibility: visible;
+}
+
+.greenChatTitle {
+    background-color: #16bd67 !important;
+}
+
+.greenChatTitle .titlebarText,
+.greenChatTitle .close {
+    color: #ffffff;
+}
